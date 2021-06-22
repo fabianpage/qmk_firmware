@@ -35,9 +35,28 @@ let
     "-B${avrlibc}/avr/lib/avr51"
     "-L${avrlibc}/avr/lib/avr51"
   ];
+
+  stable = import <nixos> { config = { allowUnfree = true; allowBroken = true; }; };
+
 in
 mkShell {
   name = "qmk-firmware";
+
+  nativeBuildInputs = [
+    stable.python3
+    stable.python3.pkgs.requests
+    stable.python3.pkgs.dotty-dict
+    stable.python3.pkgs.hjson
+    stable.python3.pkgs.jsonschema
+    stable.python3.pkgs.pygments
+    stable.python3.pkgs.hidapi
+    stable.hidapi
+    stable.python3.pkgs.pyusb
+    stable.python3.pkgs.milc
+    # pkgs.python3.pkgs.hid
+    stable.qmk
+    # stable.gnumake
+  ];
 
   buildInputs = [ clang-tools dfu-programmer dfu-util diffutils git pythonEnv poetry niv ]
     ++ lib.optional avr [
