@@ -86,8 +86,16 @@ void alt_groesser_finished (qk_tap_dance_state_t *state, void *user_data);
 void alt_groesser_reset (qk_tap_dance_state_t *state, void *user_data);
 void tilde_finished (qk_tap_dance_state_t *state, void *user_data);
 void tilde_reset (qk_tap_dance_state_t *state, void *user_data);
+void ctrl_a_H_finished (qk_tap_dance_state_t *state, void *user_data);
+void ctrl_a_H_reset (qk_tap_dance_state_t *state, void *user_data);
 void ctrl_a_j_finished (qk_tap_dance_state_t *state, void *user_data);
 void ctrl_a_j_reset (qk_tap_dance_state_t *state, void *user_data);
+void ctrl_a_K_finished (qk_tap_dance_state_t *state, void *user_data);
+void ctrl_a_K_reset (qk_tap_dance_state_t *state, void *user_data);
+void ctrl_a_L_finished (qk_tap_dance_state_t *state, void *user_data);
+void ctrl_a_L_reset (qk_tap_dance_state_t *state, void *user_data);
+void ctrl_a_CB_finished (qk_tap_dance_state_t *state, void *user_data);
+void ctrl_a_CB_reset (qk_tap_dance_state_t *state, void *user_data);
 void ctrl_a(void);
 
 //Tap Dance Definitions
@@ -100,49 +108,49 @@ qk_tap_dance_action_t tap_dance_actions[] = {
   [TD_ALT_KLEINER] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, alt_kleiner_finished, alt_kleiner_reset),
   [TD_ALT_GROESSER] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, alt_groesser_finished, alt_groesser_reset),
   [TD_TILD] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, tilde_finished, tilde_reset),
-  [TD_CTRL_A_H] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, ctrl_a_H_finished, ctrl_a_H_reset)
-  [TD_CTRL_A_J] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, ctrl_a_j_finished, ctrl_a_j_reset)
-  [TD_CTRL_A_K] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, ctrl_a_K_finished, ctrl_a_K_reset)
-  [TD_CTRL_A_L] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, ctrl_a_L_finished, ctrl_a_L_reset)
+  [TD_CTRL_A_H] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, ctrl_a_H_finished, ctrl_a_H_reset),
+  [TD_CTRL_A_J] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, ctrl_a_j_finished, ctrl_a_j_reset),
+  [TD_CTRL_A_K] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, ctrl_a_K_finished, ctrl_a_K_reset),
+  [TD_CTRL_A_L] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, ctrl_a_L_finished, ctrl_a_L_reset),
   [TD_CTRL_A_CB] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, ctrl_a_CB_finished, ctrl_a_CB_reset)
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_moonlander(
-    KC_EQUAL,              KC_1,     KC_2,         KC_3,    KC_4,       KC_5,     KC_LEFT,                     KC_RIGHT,           KC_6,     KC_7,     KC_8,     KC_9,        KC_0,    KC_MINUS,       
-    KC_TAB,                KC_Q,     KC_W,         KC_E,    KC_R,       KC_T,     TG(1),                       TG(1),              CH_Z,     KC_U,     KC_I,     KC_O,        KC_P,    KC_TAB,         
-    TD(TD_CTRL_ECKIG_OPEN),KC_A,     KC_S,         KC_D,    KC_F,       KC_G,     KC_HYPR,                     KC_MEH,             KC_H,     KC_J,     KC_K,     KC_L,        CH_OE,   TD(TD_CTRL_ECKIG_CLOSE),
-    TD(TD_SHIFT_RUND_OPEN),CH_Y,     KC_X,         KC_C,    KC_V,       KC_B,                                                      KC_N,     KC_M,     KC_COMMA, KC_DOT,      CH_MINS, TD(TD_SHIFT_RUND_CLOSE),    
+    KC_EQUAL,              KC_1,     KC_2,         KC_3,    KC_4,       KC_5,     KC_LEFT,                     KC_RIGHT,           KC_6,     KC_7,     KC_8,     KC_9,        KC_0,    KC_MINUS,
+    KC_TAB,                KC_Q,     KC_W,         KC_E,    KC_R,       KC_T,     TG(1),                       TG(1),              CH_Z,     KC_U,     KC_I,     KC_O,        KC_P,    KC_TAB,
+    TD(TD_CTRL_ECKIG_OPEN),KC_A,     KC_S,         KC_D,    KC_F,       KC_G,     KC_HYPR,                     KC_MEH,             KC_H,     KC_J,     KC_K,     KC_L,        CH_ODIA,   TD(TD_CTRL_ECKIG_CLOSE),
+    TD(TD_SHIFT_RUND_OPEN),CH_Y,     KC_X,         KC_C,    KC_V,       KC_B,                                                      KC_N,     KC_M,     KC_COMMA, KC_DOT,      CH_MINS, TD(TD_SHIFT_RUND_CLOSE),
     TD(TD_ALT_KLEINER),    CH_LCBR,  KC_CAPSLOCK,  OSL(1),  KC_ESCAPE,            LALT_T(KC_APPLICATION),      LCTL_T(KC_ESCAPE),            KC_SPACE, OSL(2),   KC_CAPSLOCK, CH_RCBR, TD(TD_ALT_GROESSER),
                                                   KC_BSPACE, KC_LGUI, KC_DELETE,                                                OSL(3),     KC_RGUI,  KC_ENTER
   ),
   [1] = LAYOUT_moonlander(
-    KC_ESCAPE,      KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,          KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,         KC_F11,         
-    KC_TRANSPARENT, CH_PAST,        CH_HASH,        CH_PLUS,        CH_MINS,        CH_AMPR,        KC_TRANSPARENT,                                 KC_TRANSPARENT, CH_DQOT,        CH_QUOT,        CH_BSLS,        CH_SLSH,        CH_QST,         CH_UE,          
-    KC_TRANSPARENT, KC_HASH,        KC_DLR,         KC_LPRN,        KC_RPRN,        KC_GRAVE,       KC_TRANSPARENT,                                                                 KC_TRANSPARENT, KC_LEFT,        KC_DOWN,        KC_UP,          KC_RIGHT,       CH_OE,          CH_AE,          
-    KC_TRANSPARENT, CH_RING,        KC_CIRC,        KC_LBRACKET,    CH_CARR,        CH_TILD,                                        CH_PIPE,        KC_GRAVE,         CH_ACUT,        CH_EQL,         KC_BSLASH,      KC_TRANSPARENT, 
-    KC_TRANSPARENT, KC_COMMA,       KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, RGB_MOD,                                                                                                        RGB_TOG,        KC_TRANSPARENT, KC_DOT,         KC_0,           KC_EQUAL,       KC_TRANSPARENT, 
+    KC_ESCAPE,      KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,          KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,         KC_F11,
+    KC_TRANSPARENT, CH_ASTR,        CH_HASH,        CH_PLUS,        CH_MINS,        CH_AMPR,        KC_TRANSPARENT,                                 KC_TRANSPARENT, CH_DQUO,        CH_QUOT,        CH_BSLS,        CH_SLSH,        CH_QUES,         CH_UDIA,
+    KC_TRANSPARENT, KC_HASH,        KC_DLR,         KC_LPRN,        KC_RPRN,        KC_GRAVE,       KC_TRANSPARENT,                                                                 KC_TRANSPARENT, KC_LEFT,        KC_DOWN,        KC_UP,          KC_RIGHT,       CH_ODIA,          CH_ADIA,
+    KC_TRANSPARENT, CH_DEG,        KC_CIRC,        KC_LBRACKET,    CH_CIRC,        CH_TILD,                                        CH_PIPE,        KC_GRAVE,         CH_ACUT,        CH_EQL,         KC_BSLASH,      KC_TRANSPARENT,
+    KC_TRANSPARENT, KC_TRANSPARENT,       KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, RGB_MOD,                                                                                                        RGB_TOG,        KC_TRANSPARENT, KC_DOT,         KC_0,           KC_EQUAL,       KC_TRANSPARENT,
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
   ),
   [2] = LAYOUT_moonlander(
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
-    KC_TRANSPARENT, CH_PAST,        CH_HASH,        CH_PLUS,        CH_MINS,        CH_AMPR,        KC_TRANSPARENT,                                 KC_TRANSPARENT, CH_DQOT,        CH_QUOT,        CH_BSLS,        CH_SLSH,        CH_QST,         CH_EXLM,        
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                                                 KC_TRANSPARENT, KC_LEFT,        KC_DOWN,        KC_UP,          KC_RIGHT,       CH_AT,          CH_DLR,         
-    KC_TRANSPARENT, CH_PERC,        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, CH_TILD,                                     CH_PIPE,        CH_GRV,         CH_ACUT,        CH_EQL,         KC_TRANSPARENT, KC_TRANSPARENT, 
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                                                                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
+    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+    KC_TRANSPARENT, KC_TRANSPARENT,        CH_HASH,        CH_PLUS,        CH_MINS,        CH_AMPR,        KC_TRANSPARENT,                                 KC_TRANSPARENT, CH_SLSH,        CH_QUOT,        CH_BSLS,        CH_SLSH,        CH_QUES,         CH_EXLM,
+    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                                                 KC_TRANSPARENT, KC_LEFT,        KC_DOWN,        KC_UP,          KC_RIGHT,       CH_AT,          CH_DLR,
+    KC_TRANSPARENT, CH_PERC,        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, CH_TILD,                                     CH_PIPE,        CH_GRV,         CH_ACUT,        CH_EQL,         KC_TRANSPARENT, KC_TRANSPARENT,
+    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                                                                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
   ),
   [3] = LAYOUT_moonlander(
-    AU_TOG,         KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, RESET,          
-    MU_TOG,         KC_TRANSPARENT, KC_TRANSPARENT, KC_MS_UP,       KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
+    AU_TOG,         KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, RESET,
+    MU_TOG,         KC_TRANSPARENT, KC_TRANSPARENT, KC_MS_UP,       KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
     MU_MOD,         KC_TRANSPARENT, KC_MS_LEFT,     KC_MS_DOWN,     KC_MS_RIGHT,    KC_TRANSPARENT, KC_TRANSPARENT,                                                                 KC_TRANSPARENT, TD(TD_CTRL_A_H), TD(TD_CTRL_A_J), TD(TD_CTRL_A_K), TD(TD_CTRL_A_L), KC_TRANSPARENT, KC_MEDIA_PLAY_PAUSE,
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, TD(TD_TILD),                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_MEDIA_PREV_TRACK,KC_MEDIA_NEXT_TRACK,KC_TRANSPARENT, TD(TD_CTRL_A_CB), 
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_MS_BTN1,     KC_MS_BTN2,     KC_TRANSPARENT,                                                                                                 KC_TRANSPARENT, KC_AUDIO_VOL_UP,KC_AUDIO_VOL_DOWN,KC_AUDIO_MUTE,  KC_TRANSPARENT, KC_TRANSPARENT, 
+    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, TD(TD_TILD),                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_MEDIA_PREV_TRACK,KC_MEDIA_NEXT_TRACK,KC_TRANSPARENT, TD(TD_CTRL_A_CB),
+    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_MS_BTN1,     KC_MS_BTN2,     KC_TRANSPARENT,                                                                                                 KC_TRANSPARENT, KC_AUDIO_VOL_UP,KC_AUDIO_VOL_DOWN,KC_AUDIO_MUTE,  KC_TRANSPARENT, KC_TRANSPARENT,
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                 KC_TRANSPARENT, KC_TRANSPARENT, KC_WWW_BACK
   ),
 };
 
- 
+
 bool g_suspend_state = false;
 rgb_config_t rgb_matrix_config;
 
@@ -381,7 +389,7 @@ void ctrl_open_eckig_finished (qk_tap_dance_state_t *state, void *user_data) {
   switch (ctrl_open_eckig_tap_state.state) {
     case SINGLE_TAP:
       register_code(KC_RALT);
-      register_code(CH_UE);
+      register_code(CH_UDIA);
       break;
     case SINGLE_HOLD: register_code(KC_LCTRL); break;
     case DOUBLE_HOLD: register_code(KC_LCTRL); break;
@@ -393,7 +401,7 @@ void ctrl_open_eckig_reset (qk_tap_dance_state_t *state, void *user_data) {
     case SINGLE_TAP:
       //unregister_code(CH_LBRC);
       unregister_code(KC_RALT);
-      unregister_code(CH_UE);
+      unregister_code(CH_UDIA);
       break;
     case SINGLE_HOLD: unregister_code(KC_LCTRL); break;
     case DOUBLE_HOLD: unregister_code(KC_LCTRL); break;
@@ -502,7 +510,7 @@ void alt_kleiner_finished (qk_tap_dance_state_t *state, void *user_data) {
   alt_kleiner_tap_state.state = cur_dance(state);
   switch (alt_kleiner_tap_state.state) {
     case SINGLE_TAP:
-      register_code(CH_LESS);
+      register_code(CH_LABK);
       break;
     case SINGLE_HOLD: register_code(KC_LALT); break;
   }
@@ -512,7 +520,7 @@ void alt_kleiner_reset (qk_tap_dance_state_t *state, void *user_data) {
   switch (alt_kleiner_tap_state.state) {
     case SINGLE_TAP:
       //unregister_code(CH_LBRC);
-      unregister_code(CH_LESS);
+      unregister_code(CH_LABK);
       break;
     case SINGLE_HOLD: unregister_code(KC_LALT); break;
   }
@@ -529,7 +537,7 @@ void alt_groesser_finished (qk_tap_dance_state_t *state, void *user_data) {
   switch (alt_groesser_tap_state.state) {
     case SINGLE_TAP:
       register_code(KC_LSHIFT);
-      register_code(CH_LESS);
+      register_code(CH_LABK);
       break;
     case SINGLE_HOLD: register_code(KC_RALT); break;
   }
@@ -540,7 +548,7 @@ void alt_groesser_reset (qk_tap_dance_state_t *state, void *user_data) {
     case SINGLE_TAP:
       //unregister_code(CH_LBRC);
       unregister_code(KC_LSHIFT);
-      unregister_code(CH_LESS);
+      unregister_code(CH_LABK);
       break;
     case SINGLE_HOLD: unregister_code(KC_RALT); break;
   }
@@ -557,10 +565,10 @@ void tilde_finished (qk_tap_dance_state_t *state, void *user_data) {
   switch (tilde_tap_state.state) {
     case SINGLE_TAP:
       register_code(KC_RALT);
-      register_code(CH_CARR);
+      register_code(CH_CIRC);
       //register_code(KC_SPACE);
       unregister_code(KC_RALT);
-      unregister_code(CH_CARR);
+      unregister_code(CH_CIRC);
       register_code(KC_SPACE);
       unregister_code(KC_SPACE);
       break;
