@@ -8,7 +8,8 @@
 // #include "keymap_swedish.h"
 // #include "keymap_br_abnt2.h"
 // #include "keymap_canadian_multilingual.h"
-#include "keymap_german_ch.h"
+// #include "keymap_german_ch.h"
+// #include "keymap_german_osx.h"
 // #include "keymap_jp.h"
 // #include "keymap_korean.h"
 // #include "keymap_bepo.h"
@@ -134,7 +135,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [2] = LAYOUT_moonlander(
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_TRANSPARENT,        CH_HASH,        CH_PLUS,        CH_MINS,        CH_AMPR,        KC_TRANSPARENT,                                 KC_TRANSPARENT, CH_SLSH,        CH_QUOT,        CH_BSLS,        CH_SLSH,        CH_QUES,         CH_EXLM,
+    KC_TRANSPARENT, CH_ASTR,        CH_HASH,        CH_PLUS,        CH_MINS,        CH_AMPR,        KC_TRANSPARENT,                                 KC_TRANSPARENT, CH_SLSH,        CH_QUOT,        CH_BSLS,        CH_SLSH,        CH_QUES,         CH_EXLM,
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                                                 KC_TRANSPARENT, KC_LEFT,        KC_DOWN,        KC_UP,          KC_RIGHT,       CH_AT,          CH_DLR,
     KC_TRANSPARENT, CH_PERC,        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, CH_TILD,                                     CH_PIPE,        CH_GRV,         CH_ACUT,        CH_EQL,         KC_TRANSPARENT, KC_TRANSPARENT,
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                                                                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
