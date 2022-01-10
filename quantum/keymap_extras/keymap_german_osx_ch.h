@@ -20,6 +20,12 @@
 
 // clang-format off
 
+#ifdef CH_H
+// The ChibiOS ch.h file defines this...
+#    undef CH_H
+#endif
+
+
 /*
  * ┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬─────┐
  * │ § │ 1 │ 2 │ 3 │ 4 │ 5 │ 6 │ 7 │ 8 │ 9 │ 0 │ ' │ ^ │     │
@@ -45,7 +51,7 @@
 #define CH_8    KC_8    // 8
 #define CH_9    KC_9    // 9
 #define CH_0    KC_0    // 0
-#define CH_QUOT   KC_QUOTE // '
+#define CH_QUOT   KC_MINUS // '
 #define CH_CIRC KC_EQL  // ^ (dead)
 // Row 2
 #define CH_Q    KC_Q    // Q
@@ -59,7 +65,7 @@
 #define CH_O    KC_O    // O
 #define CH_P    KC_P    // P
 #define CH_UDIA KC_LBRC // Ü
-#define CH_PLUS KC_RBRC // +
+#define CH_DIAE KC_RBRC // ¨ (dead)
 // Row 3
 #define CH_A    KC_A    // A
 #define CH_S    KC_S    // S
@@ -72,9 +78,9 @@
 #define CH_L    KC_L    // L
 #define CH_ODIA KC_SCLN // Ö
 #define CH_ADIA KC_QUOT // Ä
-#define CH_HASH KC_NUHS // #
+#define CH_DLR KC_BSLS // $
 // Row 4
-#define CH_LABK KC_NUBS // <
+#define CH_LABK KC_GRAVE // <
 #define CH_Y    KC_Z    // Y
 #define CH_X    KC_X    // X
 #define CH_C    KC_C    // C
@@ -88,11 +94,11 @@
 
 /* Shifted symbols
  * ┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬─────┐
- * │ ° │ ! │ " │ § │ $ │ % │ & │ / │ ( │ ) │ = │ ? │ ` │     │
+ * │ ° │ + │ " │ * │ ç │ % │ & │ / │ ( │ ) │ = │ ? │ ` │     │
  * ├───┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬───┤
- * │     │   │   │   │   │   │   │   │   │   │   │   │ * │   │
+ * │     │   │   │   │   │   │   │   │   │   │   │ è │ ! │   │
  * ├─────┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┐  │
- * │      │   │   │   │   │   │   │   │   │   │   │   │ ' │  │
+ * │      │   │   │   │   │   │   │   │   │   │ é │ à │ £ │  │
  * ├────┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴───┴──┤
  * │    │ > │   │   │   │   │   │   │   │ ; │ : │ _ │        │
  * ├────┴┬──┴─┬─┴───┼───┴───┴───┴───┴───┴───┼───┴─┬─┴──┬─────┤
@@ -100,32 +106,35 @@
  * └─────┴────┴─────┴───────────────────────┴─────┴────┴─────┘
  */
 // Row 1
-#define DE_DEG  S(DE_CIRC) // °
-#define DE_EXLM S(DE_1)    // !
-#define DE_DQUO S(DE_2)    // "
-#define DE_SECT S(DE_3)    // §
-#define DE_DLR  S(DE_4)    // $
-#define DE_PERC S(DE_5)    // %
-#define DE_AMPR S(DE_6)    // &
-#define DE_SLSH S(DE_7)    // /
-#define DE_LPRN S(DE_8)    // (
-#define DE_RPRN S(DE_9)    // )
-#define DE_EQL  S(DE_0)    // =
-#define DE_QUES S(DE_SS)   // ?
-#define DE_GRV  S(DE_ACUT) // ` (dead)
+#define CH_DEG  S(CH_CIRC) // °
+#define CH_PLUS S(CH_1)    // +
+#define CH_DQUO S(CH_2)    // "
+#define CH_ASTR S(CH_3)    // *
+#define CH_CCEDS S(CH_4)    // ç
+#define CH_PERC S(CH_5)    // %
+#define CH_AMPR S(CH_6)    // &
+#define CH_SLSH S(CH_7)    // /
+#define CH_LPRN S(CH_8)    // (
+#define CH_RPRN S(CH_9)    // )
+#define CH_EQL  S(CH_0)    // =
+#define CH_QUES S(CH_QUOT)   // ?
+#define CH_GRV  S(CH_CIRC) // ` (dead)
 // Row 2
-#define DE_ASTR S(DE_PLUS) // *
+#define CH_EGRV S(CH_UDIA) // è
+#define CH_EXLM S(CH_DIAE) // !
 // Row 3
-#define DE_QUOT S(DE_HASH) // '
+#define CH_EACU S(CH_ODIA) // é
+#define CH_AGRV S(CH_ADIA) // à
+#define CH_PND  S(CH_DLR)  // £
 // Row 4
-#define DE_RABK S(DE_LABK) // >
-#define DE_SCLN S(DE_COMM) // ;
-#define DE_COLN S(DE_DOT)  // :
-#define DE_UNDS S(DE_MINS) // _
+#define CH_RABK S(CH_LABK) // >
+#define CH_SCLN S(CH_COMM) // ;
+#define CH_COLN S(CH_DOT)  // :
+#define CH_UNDS S(CH_MINS) // _
 
 /* Alted symbols
  * ┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬─────┐
- * │ „ │ ¡ │ “ │ ¶ │ ¢ │ [ │ ] │ | │ { │ } │ ≠ │ ¿ │   │     │
+ * │ ﬁ │ ¡ │ “ │ ¶ │ ¢ │ [ │ ] │ | │ { │ } │ ≠ │ ¿ │ ´ │     │
  * ├───┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬───┤
  * │     │ « │ ∑ │ € │ ® │ † │ Ω │ ¨ │ ⁄ │ Ø │ π │ • │ ± │   │
  * ├─────┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┐  │
@@ -137,18 +146,20 @@
  * └─────┴────┴─────┴───────────────────────┴─────┴────┴─────┘
  */
 // Row 1
-#define DE_DLQU A(DE_CIRC) // „
-#define DE_IEXL A(DE_1)    // ¡
-#define DE_LDQU A(DE_2)    // “
-#define DE_PILC A(DE_3)    // ¶
-#define DE_CENT A(DE_4)    // ¢
-#define DE_LBRC A(DE_5)    // [
-#define DE_RBRC A(DE_6)    // ]
-#define DE_PIPE A(DE_7)    // |
-#define DE_LCBR A(DE_8)    // {
-#define DE_RCBR A(DE_9)    // }
-#define DE_NEQL A(DE_0)    // ≠
-#define DE_IQUE A(DE_SS)   // ¿
+// TODO
+#define CH_FI A(CH_CIRC) // ﬁ
+#define CH_PLMN A(CH_1)    // ±
+#define CH_LDQU A(CH_2)    // “
+#define CH_HASH A(CH_3)    // #
+#define CH_CCED A(CH_4)    // Ç
+#define CH_LBRC A(CH_5)    // [
+#define CH_RBRC A(CH_6)    // ]
+#define CH_PIPE A(CH_7)    // |
+#define CH_LCBR A(CH_8)    // {
+#define CH_RCBR A(CH_9)    // }
+#define CH_NEQL A(CH_0)    // ≠
+#define CH_IQUE A(CH_QUOT)   // ¿
+#define CH_ACUT A(CH_CIRC)   // ´
 // Row 2
 #define DE_LDAQ A(DE_Q)    // «
 #define DE_NARS A(DE_W)    // ∑
@@ -167,7 +178,7 @@
 #define DE_SLQU A(DE_S)    // ‚
 #define DE_PDIF A(DE_D)    // ∂
 #define DE_FHK  A(DE_F)    // ƒ
-#define DE_COPY A(DE_G)    // ©
+#define CH_AT A(CH_G)    // ©
 #define DE_FORD A(DE_H)    // ª
 #define DE_MORD A(DE_J)    // º
 #define DE_INCR A(DE_K)    // ∆
@@ -182,7 +193,7 @@
 #define DE_CCCE A(DE_C)    // Ç
 #define DE_SQRT A(DE_V)    // √
 #define DE_INTG A(DE_B)    // ∫
-#define DE_TILD A(DE_N)    // ~ (dead)
+#define CH_TILD A(CH_N)    // ~ (dead)
 #define DE_MICR A(DE_M)    // µ
 #define DE_INFN A(DE_COMM) // ∞
 #define DE_ELLP A(DE_DOT)  // …
@@ -206,7 +217,7 @@
 #define DE_RDQU S(A(DE_2))    // ”
 #define DE_PND  S(A(DE_4))    // £
 #define DE_FI   S(A(DE_5))    // ﬁ
-#define DE_BSLS S(A(DE_7))    // (backslash)
+#define CH_BSLS S(A(CH_7))    // (backslash)
 #define DE_STIL S(A(DE_8))    // ˜
 #define DE_MDDT S(A(DE_9))    // ·
 #define DE_MACR S(A(DE_0))    // ¯

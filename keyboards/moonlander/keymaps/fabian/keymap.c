@@ -1,6 +1,6 @@
 #include QMK_KEYBOARD_H
 #include "version.h"
-#include "keymap_german.h"
+#include "keymap_german_osx_ch.h"
 // #include "keymap_nordic.h"
 // #include "keymap_french.h"
 // #include "keymap_spanish.h"
@@ -517,10 +517,10 @@ void alt_kleiner_finished (qk_tap_dance_state_t *state, void *user_data) {
   }
 }
 
+
 void alt_kleiner_reset (qk_tap_dance_state_t *state, void *user_data) {
   switch (alt_kleiner_tap_state.state) {
     case SINGLE_TAP:
-      //unregister_code(CH_LBRC);
       unregister_code(CH_LABK);
       break;
     case SINGLE_HOLD: unregister_code(KC_LALT); break;
@@ -547,7 +547,6 @@ void alt_groesser_finished (qk_tap_dance_state_t *state, void *user_data) {
 void alt_groesser_reset (qk_tap_dance_state_t *state, void *user_data) {
   switch (alt_groesser_tap_state.state) {
     case SINGLE_TAP:
-      //unregister_code(CH_LBRC);
       unregister_code(KC_LSHIFT);
       unregister_code(CH_LABK);
       break;
