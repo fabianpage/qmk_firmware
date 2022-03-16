@@ -40,14 +40,14 @@
  * └─────┴────┴─────┴───────────────────────┴─────┴────┴─────┘
  */
 // Row 1
-#define CH_SECT KC_KC_NONUS_BSLASH  // §
+#define CH_SECT KC_NONUS_BSLASH   // §
 #define CH_1    KC_1    // 1
 #define CH_2    KC_2    // 2
 #define CH_3    KC_3    // 3
 #define CH_4    KC_4    // 4
 #define CH_5    KC_5    // 5
 #define CH_6    KC_6    // 6
-#define CH_7    KC_7    // 7
+#define CH_7    KC_7    //
 #define CH_8    KC_8    // 8
 #define CH_9    KC_9    // 9
 #define CH_0    KC_0    // 0
@@ -106,7 +106,7 @@
  * └─────┴────┴─────┴───────────────────────┴─────┴────┴─────┘
  */
 // Row 1
-#define CH_DEG  S(CH_CIRC) // °
+#define CH_DEG  S(CH_SECT) // °
 #define CH_PLUS S(CH_1)    // +
 #define CH_DQUO S(CH_2)    // "
 #define CH_ASTR S(CH_3)    // *
@@ -163,7 +163,7 @@
 // Row 2
 #define DE_LDAQ A(DE_Q)    // «
 #define DE_NARS A(DE_W)    // ∑
-#define DE_EURO A(DE_E)    // €
+#define CH_EURO A(CH_E)    // €
 #define DE_REGD A(DE_R)    // ®
 #define DE_DAGG A(DE_T)    // †
 #define DE_OMEG A(DE_Z)    // Ω

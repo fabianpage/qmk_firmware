@@ -26,5 +26,31 @@
     "python.formatting.provider": "yapf",
     "[json]": {
 	    "editor.formatOnSave": false
-    }
+    },
+    "files.autoSave": "onFocusChange",
+    "cSpell.words": [
+        "ACUT",
+        "ADIA",
+        "AMPR",
+        "BSLASH",
+        "BSLS",
+        "DIAE",
+        "DQUO",
+        "EXLM",
+        "GROESSER",
+        "HYPR",
+        "LALT",
+        "LCBR",
+        "LCTL",
+        "LGUI",
+        "LSPO",
+        "ODIA",
+        "PERC",
+        "RCBR",
+        "RGUI",
+        "SLSH",
+        "TILD",
+        "TRNS",
+        "UDIA"
+    ]
 }
