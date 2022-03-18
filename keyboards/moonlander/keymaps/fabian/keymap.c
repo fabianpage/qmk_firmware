@@ -102,11 +102,11 @@ qk_tap_dance_action_t tap_dance_actions[] = {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_moonlander(
-    CH_BSLS,               CH_1,     CH_2,   CH_3,    CH_4,    CH_5,      KC_LEFT,                               KC_RIGHT,CH_6,   CH_7,    CH_8,    CH_9,     CH_0,     CH_SLSH,
-    KC_TAB,                CH_Q,     CH_W,   CH_E,    CH_R,    CH_T,      TG(1),                                 TG(1),   CH_Z,   CH_U,    CH_I,    CH_O,     CH_P,     CH_UDIA,
-    TD(TD_CTRL_ECKIG_OPEN),CH_A,     CH_S,   CH_D,    CH_F,    CH_G,      KC_HYPR,                               KC_MEH,  CH_H,   CH_J,    CH_K,    CH_L,     CH_ODIA,  TD(TD_CTRL_ECKIG_CLOSE),
+    CH_BSLS,               CH_1,     CH_2,   CH_3,    CH_4,    CH_5,      KC_MSTP,                               KC_MPLY, CH_6,   CH_7,    CH_8,    CH_9,     CH_0,     CH_SLSH,
+    KC_TAB,                CH_Q,     CH_W,   CH_E,    CH_R,    CH_T,      KC_MPRV,                               KC_MNXT, CH_Z,   CH_U,    CH_I,    CH_O,     CH_P,     CH_UDIA,
+    TD(TD_CTRL_ECKIG_OPEN),CH_A,     CH_S,   CH_D,    CH_F,    CH_G,      KC_VOLD,                               KC_VOLU, CH_H,   CH_J,    CH_K,    CH_L,     CH_ODIA,  TD(TD_CTRL_ECKIG_CLOSE),
     TD(TD_SHIFT_RUND_OPEN),CH_Y,     CH_X,   CH_C,    CH_V,    CH_B,                                                      CH_N,   CH_M,    CH_COMM, CH_DOT,   CH_MINS,  TD(TD_SHIFT_RUND_CLOSE),
-    TD(TD_ALT_KLEINER),    CH_LCBR,  KC_CAPS,KC_ENTER,KC_SPACE,             LALT_T(KC_APPLICATION),   LCTL_T(KC_ESCAPE),          KC_SPACE,KC_ENTER,KC_CAPS,  CH_RCBR,  TD(TD_ALT_GROESSER),
+    TD(TD_ALT_KLEINER),    CH_LCBR,  KC_CAPS,KC_ENTER,KC_SPACE,             LCTL(CH_BSLS),            KC_MUTE,                    KC_SPACE,KC_ENTER,KC_CAPS,  CH_RCBR,  TD(TD_ALT_GROESSER),
                                                                             OSL(1), TD(TD_ESC_COMMAND), KC_BACKSPACE,  KC_BACKSPACE, TD(TD_ESC_COMMAND), OSL(2)
   ),
   [1] = LAYOUT_moonlander(
@@ -114,7 +114,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRNS,               CH_ACUT_A,CH_7,   CH_8,    CH_9,    CH_AMPR,   KC_TRNS,                               KC_TRNS, CH_HASH,CH_ASTR, CH_PLUS, CH_EXLM,  CH_QUES,  CH_UDIA_C,
     KC_TRNS,               CH_GRV_A, CH_4,   CH_5,    CH_6,    CH_AT,     KC_TRNS,                               KC_TRNS, KC_LEFT,KC_DOWN, KC_UP,   KC_RIGHT, CH_ODIA_C,CH_ADIA,
     KC_TRNS,               CH_PERC,  CH_1,   CH_2,    CH_3,    CH_TILDE_A,                                                CH_PIPE,CH_QUOT, CH_DQUO, CH_DIAE,  CH_DLR,   CH_EQL,
-    KC_TRNS,               KC_TRNS,  CH_0,   KC_TRNS, KC_TRNS,              KC_TRNS,                  RGB_TOG,                    KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS,  CH_CIRC,
+    KC_TRNS,               KC_TRNS,  CH_0,   KC_TRNS, KC_TRNS,              KC_TRNS,                  KC_TRNS,                    KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS,  CH_CIRC,
                                                                             KC_TRNS, KC_TRNS, KC_DEL,KC_DEL, KC_TRNS, KC_TRNS
   ),
   [2] = LAYOUT_moonlander(
@@ -229,40 +229,32 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       return false;
     case CH_ODIA_C:
       if (record->event.pressed) {
-        register_code(KC_CAPS);
+        register_code(CH_DIAE);
+        unregister_code(CH_DIAE);
         register_code(KC_LSFT);
+        register_code(CH_O);
+        unregister_code(CH_O);
         unregister_code(KC_LSFT);
-        register_code(KC_LSFT);
-        unregister_code(KC_LSFT);
-        register_code(CH_ODIA);
-        register_code(KC_LSFT);
-        unregister_code(KC_LSFT);
-        register_code(KC_LSFT);
-        unregister_code(KC_LSFT);
-        unregister_code(CH_ODIA);
-        register_code(KC_LSFT);
-        unregister_code(KC_LSFT);
-        register_code(KC_LSFT);
-        unregister_code(KC_LSFT);
-        register_code(KC_LSFT);
-        unregister_code(KC_LSFT);
-        unregister_code(KC_CAPS);
       }
       return false;
     case CH_ADIA_C:
       if (record->event.pressed) {
-        register_code(KC_CAPS);
-        register_code(CH_ADIA);
-        unregister_code(CH_ADIA);
-        unregister_code(KC_CAPS);
+        register_code(CH_DIAE);
+        unregister_code(CH_DIAE);
+        register_code(KC_LSFT);
+        register_code(CH_A);
+        unregister_code(CH_A);
+        unregister_code(KC_LSFT);
       }
       return false;
     case CH_UDIA_C:
       if (record->event.pressed) {
-        register_code(KC_CAPS);
-        register_code(CH_UDIA);
-        unregister_code(CH_UDIA);
-        unregister_code(KC_CAPS);
+        register_code(CH_DIAE);
+        unregister_code(CH_DIAE);
+        register_code(KC_LSFT);
+        register_code(CH_U);
+        unregister_code(CH_U);
+        unregister_code(KC_LSFT);
       }
       return false;
   }
