@@ -12,3 +12,4 @@ LAYER_LOCK_ENABLE = yes
 KEY_LOCK_ENABLE = yes
 
 SRC += features/layer_lock.c
+TRI_LAYER_ENABLE = yes

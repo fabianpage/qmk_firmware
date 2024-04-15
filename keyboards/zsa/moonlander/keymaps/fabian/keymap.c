@@ -17,7 +17,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRANSPARENT, MT(MOD_LCTL, KC_P),KC_O,           KC_I,           KC_U,           KC_T,           KC_TRANSPARENT,                                 QK_DYNAMIC_TAPPING_TERM_PRINT,MT(MOD_LALT, KC_T),MT(MOD_LCTL, KC_U),KC_I,           MT(MOD_LGUI, KC_O),KC_P,           KC_TRANSPARENT,
     KC_TRANSPARENT, KC_S,           MT(MOD_LSFT, KC_A),KC_E,           KC_R,           LT(4,KC_N),     KC_TRANSPARENT,                                                                 QK_DYNAMIC_TAPPING_TERM_DOWN,LT(4,KC_N),     MT(MOD_LSFT, KC_R),KC_E,           MT(MOD_LSFT, KC_A),MT(MOD_LALT, KC_S),KC_TRANSPARENT,
     KC_TRANSPARENT, MT(MOD_LGUI, KC_D),KC_L,           KC_C,           KC_V,           KC_H,                                           KC_H,           MT(MOD_LGUI, KC_V),KC_C,           MT(MOD_LCTL, KC_L),KC_D,           KC_TRANSPARENT,
-
+    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                                                                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+    LT(3,KC_SPACE), LT(TL_LOWR,KC_ENTER), LT(TL_UPPR,KC_TAB),                   LT(2,KC_TAB),   LT(1,KC_ENTER), OSL(3)
   ),
   [1] = LAYOUT_moonlander(
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
@@ -145,7 +146,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
     case ST_MACRO_0:
     if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_S) SS_DELAY(100) SS_TAP(X_C) SS_DELAY(100) SS_TAP(X_H));
+      SEND_STRING(SS_TAP(X_S) SS_DELAY(10) SS_TAP(X_C) SS_DELAY(10) SS_TAP(X_H));
     }
     break;
 
@@ -161,5 +162,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   return true;
 }
 
-
+layer_state_t layer_state_set_user(layer_state_t state) {
+  state = update_tri_layer_state(state, 1, 2, 4);
+  state = update_tri_layer_state(state, 2, 3, 5);
+  return state;
+}
 
